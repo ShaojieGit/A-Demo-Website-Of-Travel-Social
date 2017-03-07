@@ -1,0 +1,209 @@
+create database web_database;
+
+//用户表
+create table user
+(Username char(20),
+Password char(20),
+Email char(40) unique,
+Sex char check (Sex('m','f')),
+Headimage char(50),
+Usertype char(20) check(Usertype('user','spot')),
+Spot char(50),
+primary key(Username));
+
+ALTER TABLE `web_database`.`user` 
+CHANGE COLUMN `Headimage` `Headimage` CHAR(50) NULL DEFAULT 'default_headimage.jpg' ;
+
+
+
+
+
+//状态表
+
+create table action
+(Username char(20),
+ActionText char(200),
+ActionImage char(50),
+CreateTime timestamp ,
+Shared char(20),primary key(Username,CreateTime));
+
+alter table action change Createtime Createtime timestamp not null default now();  
+
+
+ALTER TABLE `web_database`.`action` 
+ADD CONSTRAINT `Username`
+  FOREIGN KEY (`Username`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `web_database`.`action` 
+ADD INDEX `ShareFrom_idx` (`Shared` ASC);
+ALTER TABLE `web_database`.`action` 
+ADD CONSTRAINT `ShareFrom`
+  FOREIGN KEY (`Shared`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE;
+
+
+//用户关系表
+create table relation
+(Username char(20),
+Friendname char(20),
+primary key(Username,Friendname));
+insert into relation values('zhang','xia');
+insert into relation values('xia','zhang');
+
+ALTER TABLE `web_database`.`relation` 
+ADD CONSTRAINT `Myname`
+  FOREIGN KEY (`Username`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `Friendname`
+  FOREIGN KEY (`Username`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+//状态评论表
+create table comments(
+CommentUser char(20),
+CommentTime timestamp,
+CommentContent char(200),
+WhoseAction char(20),
+PublishTime timestamp,
+Reply char(20),
+primary key(CommentUser,CommentTime),
+foreign key (WhoseAction,PublishTime) references action(Username,Createtime) ON DELETE CASCADE);
+
+
+
+alter table comments change CommentTime CommentTime timestamp not null default now();  
+
+
+ALTER TABLE `web_database`.`comments` 
+DROP FOREIGN KEY `comments_ibfk_1`;
+ALTER TABLE `web_database`.`comments` 
+ADD CONSTRAINT `comments_ibfk_1`
+  FOREIGN KEY (`WhoseAction` , `PublishTime`)
+  REFERENCES `web_database`.`action` (`Username` , `Createtime`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+ALTER TABLE `web_database`.`comments` 
+ADD CONSTRAINT `CommentUser`
+  FOREIGN KEY (`CommentUser`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+
+
+ 
+//景点
+create table spot
+(Spotname char(50),
+Username char(20),
+Position char(50),
+Level  char(20),
+Phonenumber char(20),
+spottext char(255),
+primary key(Spotname),
+foreign key (Username) references user (Username)
+);
+
+
+ALTER TABLE `web_database`.`spot` 
+DROP FOREIGN KEY `spot_ibfk_1`;
+ALTER TABLE `web_database`.`spot` 
+ADD CONSTRAINT `spot_ibfk_1`
+  FOREIGN KEY (`Username`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `web_database`.`spot` 
+DROP FOREIGN KEY `spot_ibfk_1`;
+ALTER TABLE `web_database`.`spot` 
+ADD CONSTRAINT `spot_ibfk_1`
+  FOREIGN KEY (`Username`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+;
+
+
+//景点图片
+create table spotimage
+(Imagename char(50),
+Spotname char(50),
+primary key(Imagename)
+);
+
+ALTER TABLE `web_database`.`spotimage` 
+ADD CONSTRAINT `Spotname2`
+  FOREIGN KEY (`Spotname`)
+  REFERENCES `web_database`.`spot` (`Spotname`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+//景点评价
+create table commentspot(
+CommentUser char(20),
+CommentTime timestamp,
+CommentContent char(200),
+Spotname char(50),
+primary key(CommentUser,CommentTime));
+
+alter table commentspot change CommentTime CommentTime timestamp not null default now(); 
+
+ALTER TABLE `web_database`.`commentspot` 
+ADD INDEX `Spotname_idx` (`Spotname` ASC);
+ALTER TABLE `web_database`.`commentspot` 
+ADD CONSTRAINT `CommentUser2`
+  FOREIGN KEY (`CommentUser`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `Spotname`
+  FOREIGN KEY (`Spotname`)
+  REFERENCES `web_database`.`spot` (`Spotname`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+//景点收藏
+create table collectspot
+(Username char(20),
+Spotname char(50),
+primary key(Username,Spotname),
+foreign key (Username) references user (Username) ON DELETE CASCADE,
+foreign key (Spotname) references spot (Spotname) ON DELETE CASCADE
+) 
+;
+
+
+ALTER TABLE `web_database`.`collectspot` 
+DROP FOREIGN KEY `collectspot_ibfk_1`,
+DROP FOREIGN KEY `collectspot_ibfk_2`;
+ALTER TABLE `web_database`.`collectspot` 
+ADD CONSTRAINT `collectspot_ibfk_1`
+  FOREIGN KEY (`Username`)
+  REFERENCES `web_database`.`user` (`Username`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `collectspot_ibfk_2`
+  FOREIGN KEY (`Spotname`)
+  REFERENCES `web_database`.`spot` (`Spotname`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+
+
