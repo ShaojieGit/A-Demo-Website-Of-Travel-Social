@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+ <constant name="struts.devMode" value="true" />	
+	<!--  --><constant name="struts.ui.theme" value="simple"/>
+	<package name="default"  extends="struts-default">
+		<!-- 在这里添加Action定义 -->
+		<action name="Login" class="action.LoginAction">
+			<result name="input">/login.jsp</result>
+			<result name="success">/index.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<action name="Quit" class="action.QuitAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="Regist" class="action.RegistAction">
+			<result name="input">/regist.jsp</result>
+			<result name="success">/index.jsp</result>
+			<result name="error">/regist.jsp</result>
+		</action>
+		<action name="Publish" class="action.PublishAction">
+			<result name="zone" type="redirectAction">Zone</result>
+			<result name="friendaction" type="redirectAction">FriendAction</result>
+			<result name="input">/friend_action.jsp</result>
+		</action>
+		
+		<action name="FriendAction" class="action.ShowActionAction">
+			<result name="success">/friend_action.jsp</result>
+			<result name="input">/friend_action.jsp</result>
+		</action>
+		<action name="Comment" class="action.CommentAction">
+			<result name="success" type="redirectAction">FriendAction</result>
+			<result name="input" type="redirectAction">FriendAction</result>
+		</action>
+		<action name="Share" class="action.ShareAction">
+			<result name="success" type="redirectAction">FriendAction</result>
+			<result name="input" type="redirectAction">FriendAction</result>
+		</action>
+		<action name="DeleteAction" class="action.DeleteAction">
+			<result name="success" type="redirectAction">FriendAction</result>
+			<result name="input" type="redirectAction">FriendAction</result>
+		</action>
+		<action name="Zone" class="action.ZoneAction">
+			<result name="success">/myzone.jsp</result>
+			<result name="input">/myzone.jsp</result>
+		</action>
+		<action name="Focus" class="action.FocusAction">
+			<result name="success" type="redirectAction">Zone</result>
+			<result name="input" type="redirectAction">Zone</result>
+		</action>
+		<action name="Set" class="action.SetAction">
+			<result name="success">/set.jsp</result>
+			<result name="input">/set.jsp</result>
+		</action>
+		
+		<action name="SpotUser" class="action.SpotUserAction">
+			<result name="success" type="redirectAction">Set</result>
+			<result name="input" type="redirectAction">Set</result>
+		</action>
+		<action name="ManageSpot" class="action.ManageSpotAction">
+			<result name="success">/managespot.jsp</result>
+			<result name="input">/managespot.jsp</result>
+		</action>
+		<action name="CreateSpot" class="action.CreateSpotAction">
+			<result name="success" type="redirectAction">ManageSpot</result>
+			<result name="input" type="redirectAction">ManageSpot</result>
+		</action>
+		<action name="ChangeSpotInfo" class="action.ChangeSpotInfoAction">
+			<result name="success" type="redirectAction">ManageSpot</result>
+			<result name="input" type="redirectAction">ManageSpot</result>
+		</action>
+		
+		<action name="ShowSpots" class="action.ShowSpotsAction">
+			<result name="success">/showspots.jsp</result>
+			<result name="input">/showspots.jsp</result>
+		</action>
+		
+		<action name="SpotInfo" class="action.SpotInfoAction">
+			<result name="success">/spotinfo.jsp</result>
+			<result name="input">/spotinfo.jsp</result>
+		</action>
+		<action name="CommentSpot" class="action.CommentSpotAction">
+			<result name="success" type="redirectAction">SpotInfo</result>
+			<result name="input" type="redirectAction">SpotInfo</result>
+		</action>
+		<action name="DeleteSpotComment" class="action.DeleteSpotCommentAction">
+			<result name="success" type="redirectAction">SpotInfo</result>
+			<result name="input" type="redirectAction">SpotInfo</result>
+		</action>
+		<action name="CollectSpot" class="action.CollectSpotAction">
+			<result name="success" type="redirectAction">SpotInfo</result>
+			<result name="input" type="redirectAction">SpotInfo</result>
+		</action> 
+		<action name="ChangeUserInfo" class="action.ChangeUserInfoAction">
+			<result name="success" type="redirectAction">Zone</result>
+			<result name="input" type="redirectAction">Set</result>
+		</action>  
+		<action name="ChangePassword" class="action.ChangePasswordAction">
+			<result name="success" type="redirectAction">Zone</result>
+			<result name="input">/changepassword.jsp</result>
+		</action>    
+		<action name="CancelFocus" class="action.CancelFocusAction">
+			<result name="success" type="redirectAction">Zone</result>
+			<result name="input" type="redirectAction">Zone</result>
+		</action>    
+		<action name="CancelFans" class="action.CancelFansAction">
+			<result name="success" type="redirectAction">Zone</result>
+			<result name="input" type="redirectAction">Zone</result>
+		</action>    
+		<action name="SearchUser" class="action.SearchUserAction">
+			<result name="success">/searchUserResult.jsp</result>
+			<result name="input">/searchUserResult.jsp</result>
+		</action>   
+		<action name="SearchSpot" class="action.SearchSpotAction">
+			<result name="success">/searchSpotResult.jsp</result>
+			<result name="input">/searchSpotResult.jsp</result>
+		</action>   
+		<action name="ReplyComment" class="action.ReplyCommentAction">
+			<result name="success" type="redirectAction">FriendAction</result>
+			<result name="zone" type="redirectAction">Zone</result>
+			<result name="input" type="redirectAction">FriendAction</result>
+		</action> 
+		
+	</package>
+</struts>
+

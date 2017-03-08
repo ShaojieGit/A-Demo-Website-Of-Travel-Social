@@ -1,0 +1,29 @@
+<script language="JavaScript">
+     function switchTab(tabid){
+      var oItem = document.getElementByIdx("TabPage1").getElementsByTagName_r("li");
+         for(var i=0; i<oItem.length; i++){
+             var x = oItem[i];   
+             x.className = "";
+             var y = x.getElementsByTagName_r('a');
+             y[0].style.color="#333333";
+         }
+      for(var i=0;i<2;i++){
+       if(i==tabid){
+        document.getElementByIdx("Tab"+i).className = "Selected";
+        document.getElementByIdx("dTab"+i).style.display='block';
+       }else{
+        document.getElementByIdx("dTab"+i).style.display='none';
+       }
+      }
+     }
+    </script>
+ 
+   <ul class="tab" id="TabPage1">
+  <li  id="Tab0" class="Selected"><a onmouseover="switchTab('0');">最新专辑</a></li>
+  <li  id="Tab1"><a onmouseover="switchTab('1');">最热专辑</a></li>
+       </ul>
+    <div id="dTab0" class="hackbox" style="display:block">
+    </div>
+
+    <div id="dTab1" class="hackbox" >内容1
+    </div>

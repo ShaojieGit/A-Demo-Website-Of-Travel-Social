@@ -1,0 +1,23 @@
+<style>
+ 
+ #color1,#color2,#color3{border:5px #FFFFFF solid;width:30px; height:30px}
+ #color1{ background:#FF9900;}
+ #color2{ background:#00CCFF;}
+ #color3{ background:#000000;}
+</style>
+<script>
+function colors(i)
+{
+ if(i==1)
+ bodys.style.background="#FF9900";
+    else if(i==2)
+ bodys.style.background="#00CCFF";
+ else
+ bodys.style.background="#000";
+}
+</script>
+<body id="bodys">
+   <input type="button" id="color1" onclick="colors(1)">
+   <input type="button" id="color2" onclick="colors(2)">
+   <input type="button" id="color3" onclick="colors(3)">
+</body>

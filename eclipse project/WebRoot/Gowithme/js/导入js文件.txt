@@ -1,0 +1,14 @@
+index.js为什么要包含了几个网页的js。 为什么只用一个js文件？为什么不把只有首页用的js写在单独的一个JS文件中？
+我之所以给他其名叫index.js就是告诉你这个JS文件只写只有首页要用到的js代码。至于其他的都要用的JS代码，可以写在allpage.js文件中。如下
+<script src="index.js" type="text/javascript"></script> 
+<script src="allpage.js" type="text/javascript"></script> 
+用哪个就调哪个，不用哪个就不调哪个。全用就全调，全不用就全不调。这样不行么？
+没听说过把不是全局使用的js代码写在公共的js文件中的
+
+css样式写在style.css文件中
+首页要调用的js写在index.js文件中
+
+要用css样式的页面<head>中加上
+<link href="style.css" rel="stylesheet" type="text/css">
+要用js代码的页面<head>中加上
+<script src="index.js" type="text/javascript"></script>

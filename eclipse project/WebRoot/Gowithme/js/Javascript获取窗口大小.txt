@@ -1,0 +1,77 @@
+Javascript获取窗口大小：  
+
+     网页可见区域宽：document.body.clientWidth    
+
+
+     网页可见区域高：document.body.clientHeight   
+     网页可见区域宽：document.body.offsetWidth      (包括边线的宽)   
+     网页可见区域高：document.body.offsetHeight      (包括边线的宽)   
+     网页正文全文宽：document.body.scrollWidth   
+     网页正文全文高：document.body.scrollHeight   
+     网页被卷去的高：document.body.scrollTop   
+     网页被卷去的左：document.body.scrollLeft   
+     网页正文部分上：window.screenTop   
+     网页正文部分左：window.screenLeft   
+     屏幕分辨率的高：window.screen.height   
+     屏幕分辨率的宽：window.screen.width   
+     屏幕可用工作区高度：window.screen.availHeight   
+     屏幕可用工作区宽度：window.screen.availWidth
+
+
+
+让弹出层始终居于屏幕中间（拖动滚动条、拉大或缩小页面时都居于屏幕中间）  
+
+2012-10-31 15:32:44|  分类： JQUERY |举报|字号 订阅
+   
+       /*让弹出层始终居于屏幕中间（拖动滚动条、拉大或缩小页面时都居于屏幕中间）*/
+
+   $(document).ready(function(){   
+
+           // 让弹出窗口居中
+     function center(obj) {
+        
+         var screenWidth = $(window).width(), screenHeight = $(window).height();  //当前浏览器窗口的 宽高
+         var scrolltop = $(document).scrollTop();//获取当前窗口距离页面顶部高度
+    
+         var objLeft = (screenWidth - obj.width())/2 ;
+         var objTop = (screenHeight - obj.height())/2 + scrolltop;
+ 
+         obj.css({left: objLeft + 'px', top: objTop + 'px'});
+
+         //浏览器窗口大小改变时
+         $(window).resize(function() {
+             screenWidth = $(window).width();
+             screenHeight = $(window).height();
+             scrolltop = $(document).scrollTop();
+            
+             objLeft = (screenWidth - obj.width())/2 ;
+             objTop = (screenHeight - obj.height())/2 + scrolltop;
+            
+             obj.css({left: objLeft + 'px', top: objTop + 'px'});
+            
+         });
+
+         //浏览器有滚动条时的操作、
+         $(window).scroll(function() {
+             screenWidth = $(window).width();
+             screenHeight = $(window).height();
+             scrolltop = $(document).scrollTop();
+            
+             objLeft = (screenWidth - obj.width())/2 ;
+             objTop = (screenHeight - obj.height())/2 + scrolltop;
+            
+             obj.css({left: objLeft + 'px', top: objTop + 'px'});
+         });
+        
+     }
+
+       $(".fa_sixin, .cuncui_tancu01").click(       
+          function(){center( $('.private_message') )
+           });
+
+     
+
+    
+     
+    
+ });

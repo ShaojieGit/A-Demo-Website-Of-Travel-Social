@@ -1,0 +1,322 @@
+/*包含页面几乎所有对象的*/
+body {
+	background-color: #FFF;
+	opacity:0.8;
+	filter: Alpha(Opacity=80);
+}
+.container {
+	width:900px;
+	background-color: #FFF;
+	margin: 0 auto;
+	background:#FFF;
+}
+.floatright {
+	float:right;
+}
+
+/*头部开始*/
+.header {
+	display:block;
+	height:90;
+}
+.user {
+	float:right;
+	height:50;
+	width:50;
+	padding-top:50px;
+}
+/*头部结束*/
+
+
+/*登录注册开始*/
+.logincenter {
+	margin:50px auto;
+}
+.login {
+	margin-left:380px;
+	text-align:left;
+}
+.loginbuttons {
+}
+.goregister {
+	padding-left:8px;
+	font-size:13px;
+}
+.goregister:link {
+	color:#CCC;
+	text-decoration:none;
+}
+.login input[type="email"],
+.login input[type="password"] {
+	height:25px;
+	width:200px;
+	border:#999 1px solid;
+	border-radius:3px;
+}
+.login input[type="submit"],
+.login input[type="button"] {
+	height: 33px;
+	width: 70px;
+	background-color:#F90;
+	font-size:16px;
+	color: #333333;
+	border:none;
+	border-radius:4px;
+	cursor:pointer;
+}
+input[type="email"]:hover{
+	border-color:#F90;
+}
+input[type="password"]:hover{
+	border-color:#F90;
+}
+#usernameerror,
+#userpasswerror,
+#userpasswagainerror {
+	display:none;
+}
+.error {
+	height:15px;
+}
+/*登录注册结束*/
+
+/*菜单开始*/
+.menu {
+	width:100%;
+	height:30px;
+}
+.menu ul {
+	margin-left:0;
+	margin-top:0;
+	padding-left:0;
+}
+.menu ul li {
+	float:left;
+	list-style:none;
+	margin-right:20px;
+}
+.menu input[type="text"] {
+	height:20px;
+	width:150px;
+	border:#999 1px solid;
+	border-radius:2px;
+}
+.menu input[type="submit"] {
+	height: 25px;
+	width: 45px;
+	background-color: #A8A8A8;
+	color: #333333;
+	border: none;
+	border-radius: 3px;
+	cursor:pointer;
+}
+.menu input[type="text"]:hover{
+	border-color:#F90;
+}
+#btn1,
+#btn2,
+#btn3,
+#btn4,
+#btn5,
+#btn6,
+#btn7,
+#btn8 {
+	border-style:none;
+	border-left-style:solid;
+	background:none;
+	font-size:22px;
+	color:#999;
+	border-color:#999;
+	cursor:pointer;
+}
+#btn1:hover{
+	color:#F90;
+	border-color:#F90;
+}
+#btn2:hover{
+	color:#F90;
+	border-color:#F90;
+}
+#btn3:hover{
+	color:#F90;
+	border-color:#F90;
+}
+#btn4:hover{
+	color:#F90;
+	border-color:#F90;
+}
+#btn5:hover{
+	color:#F90;
+	border-color:#F90;
+}
+#btn6:hover{
+	color:#F90;
+	border-color:#F90;
+}
+#btn7:hover{
+	color:#F90;
+	border-color:#F90;
+}
+#btn8:hover{
+	color:#F90;
+	border-color:#F90;
+}
+/*菜单结束*/
+
+/*首页内容开始*/
+#page2,
+#page3,
+#page4,
+#page5,
+#page6,
+#page7,
+#page8 {
+	display:none;
+}
+
+.content {
+	margin-top:50px;
+	height:250px;
+	overflow:hidden;
+}
+.content img {
+	box-shadow: ;
+	transition:box-shadow .3s ease-in;
+}
+.content img:hover {
+	box-shadow:4px 4px 8px #666;
+}
+.content1 img,
+.content2 img,
+.content3 img,
+.content4 img {
+	text-align:center;
+	max-width:32%;
+	width:32%;
+	height:250px;
+	cursor:pointer;
+}
+#more {
+	cursor:pointer;
+}
+/*首页内容结束*/
+
+/*一条动态开始*/
+.main {
+	margin-top:50px;
+}
+.oneaction {
+	padding-bottom:20px;
+	margin:0 0;
+	height:auto;
+}
+.oneaction img {
+	width:30%;
+	height:30%;
+	cursor:pointer;
+}
+.actionheader {
+	width:100%;
+	padding:10px 0 20px;
+}
+.headpicture {
+	float:left;
+	width:50px;
+	height:50px;
+}
+.headpicture img {
+	width:100%;
+	height:100%;
+	cursor:pointer;
+}
+.actionusername {
+}
+.actiontime {
+}
+.actiondelete input {
+	float: right;
+	background: none;
+	border: none;
+	color: #F63;
+	cursor:pointer;
+}
+.actionbody {
+	padding-left:60px;
+}
+.actionword {
+	padding-bottom:10px;
+}
+.actionpicture {
+	padding-bottom:10px;
+}
+.actionpicture img {
+	width:30%;
+	height:30%;
+	cursor:pointer;
+	box-shadow: ;
+	transition:box-shadow .3s ease-in;
+}
+.actionpicture img:hover {
+	box-shadow:4px 4px 8px #666;
+}
+textarea {
+	width:70%;
+	height:30px;
+	border-color:#999;
+	border-radius:3px;
+}
+.commentaction input {
+	height:35px;
+	border-radius:4px;
+	float:right;
+	margin-left:10px;
+	cursor:pointer;
+}
+
+#box {
+	position:absolute;
+	z-index:100;
+	border:1px solid #999;
+	width:100%;
+	height:100%;
+	background-color:#999;
+	margin:0 auto;
+	display:none;
+}
+#box img {
+	position:relative;
+}
+#closebtn {
+	position:absolute;
+	top:5px;
+	right:5px;
+}
+
+/*一条动态结束*/
+
+/*关注与粉丝开始*/
+.onefocus {
+	height:50px;
+	padding-top:20px;
+}
+.nofocusbutton {
+}
+/*关注与粉丝结束*/
+.footer {
+	width: 100%;
+	height: 60px;
+	margin-bottom:0px;
+	padding:20px 0;
+	text-align:center;
+	background-color: #DFDFDF
+}
+
+.top {
+	padding-right:40px;
+	text-align:right;
+}
+input[value="Top"] {
+	z-index:1;
+	position:fixed;
+	cursor:pointer;
+}

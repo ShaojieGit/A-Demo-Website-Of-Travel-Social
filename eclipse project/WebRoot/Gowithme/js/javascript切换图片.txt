@@ -1,0 +1,40 @@
+结合window对象的settimeout（）方法制作一个多幅图片切换特效。
+提示：获得层对象，通过层样式的DISPLAY属性设置图片是显示还是隐藏。
+求助啊，谁会？写下代码，急用
+分享到：
+2010-02-04 19:50 提问者采纳
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<script language="JavaScript">
+
+var k=0;
+var imgname1="image/"; 
+var imgname2=".jpg"; 
+var imgnub=3;
+function start(){ 
+obj=eval("img1"); 
+if (obj.filters.item(0).Transition==23) 
+obj.filters.item(0).Transition=1;
+else
+obj.filters.item(0).transition++;
+obj.filters.item(0).Apply();
+if (k<imgnub) {k++; 
+}else {k=1;
+}
+obj.src=imgname1+k+imgname2;
+obj.filters.item(0).Play();
+setTimeout("start(1)",3000); 
+}
+
+</script> 
+
+</head>
+
+<body onload="start()">
+<img id="img1" src="image/0.jpg" style="filter:revealTrans(Transition=2,Duration=1.5)">
+
+</body>
+
+这样OK了么，，个数和时间，图片名称，路径，自己改

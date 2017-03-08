@@ -1,0 +1,36 @@
+我的理解是点击 A按钮 会来回切换 AB 的背景颜色，对麼？如果理解的对的话，这麼写：
+<html>
+ <head>
+  <title>test button</title>  
+  <script type="text/javascript">
+   function changeColor() {
+    var btnA = document.getElementById("btnA");
+    var btnB = document.getElementById("btnB");
+    var tmpColor = btnA.style.backgroundColor;
+    btnA.style.backgroundColor = btnB.style.backgroundColor;
+    btnB.style.backgroundColor = tmpColor;
+   }
+  </script>
+ </head>
+ <body>
+  <input type="button" id="btnA" name="btnA" value="Button A" style="background-color:#FF00FF;" onclick="javascript:changeColor();"/>
+  <input type="button" id="btnB" name="btnB" value="Button B" onclick="javascript:changeColor();"/>
+ </body>
+</html>
+
+如果点击 B 不需要切换颜色的话，将 B 按钮的 onclick="javascript:changeColor();" 删掉。
+
+如果只是要求 A 点击的第一次切换颜色，而以后不再切换，那麼将 script 部分换成这样写：
+  <script type="text/javascript">
+   var times = 0;
+   function changeColor() {
+    if ( ++times > 1 ) return;
+    var btnA = document.getElementById("btnA");
+    var btnB = document.getElementById("btnB");
+    var tmpColor = btnA.style.backgroundColor;
+    btnA.style.backgroundColor = btnB.style.backgroundColor;
+    btnB.style.backgroundColor = tmpColor;
+   }
+  </script>
+
+如果要实现 ”A按钮点击×次内有切换效果“ 的话，将第二步里 if ( ++times > 1 ) return; 这里的 1 换成想要的次数即可。
